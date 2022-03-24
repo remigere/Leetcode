@@ -4,8 +4,7 @@ class Solution:
         for row in range(numRows):
             if row == 0:
                 ans.append([1])
-            elif row == 1:
-                ans.append([1, 1])
+            
             else:
                 cur = [1] + [a + b for a, b in zip(ans[-1][:-1], ans[-1][1:])] + [1]
                 ans.append(cur)
