@@ -4,7 +4,6 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         j = nums[0] != 0
-        print(j)
         for i in range(1, len(nums)):
             if nums[i] != 0:
                 if nums[i - 1] == 0:
