@@ -5,11 +5,22 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def generateTrees(self, n):
+    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         """
-        :type n: int
-        :rtype: List[TreeNode]
+        ans = []
+        def rec(nums):
+            print("here")
+            if not nums: return
+            for i in range(len(nums)):
+                tree = TreeNode(nums[i], rec(nums[:i]), rec(nums[i + 1:]))
+                ans.append(tree)
+            
+        nums = [k for k in range(1, n + 1)]
+        print(nums)
+        rec(nums)
+        return ans
         """
+        
         def generate_trees(start, end):
             if start > end:
                 return [None,]
