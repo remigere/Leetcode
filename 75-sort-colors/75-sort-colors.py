@@ -15,5 +15,5 @@ class Solution:
             elif nums[middle] == 1:
                 middle += 1
             else:
-                    nums[middle], nums[right] = nums[right], nums[middle]
-                    right -= 1
+                nums[middle], nums[right] = nums[right], nums[middle]
+                right -= 1
