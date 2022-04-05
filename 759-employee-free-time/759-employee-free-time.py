@@ -8,12 +8,12 @@ class Interval:
 
 class Solution:
     def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
-        ints = sorted([i for s in schedule for i in s], key=lambda x: x.start)
-        res, pre = [], ints[0]
-        for i in ints[1:]:
-            if i.start <= pre.end and i.end > pre.end:
-                pre.end = i.end
-            elif i.start > pre.end:
-                res.append(Interval(pre.end, i.start))
-                pre = i
-        return res
+        ints = sorted([[interval.start, interval.end] for intervals in schedule for interval in intervals])
+        #print(ints)
+        ans = []
+        for i in range(len(ints)):
+            if not ans or ints[i][0] > ans[-1][1]:
+                ans.append(ints[i])
+            elif ints[i][1] > ans[-1][1]:
+                ans[-1][1] = ints[i][1]
+        return [Interval(ans[i][1], ans[i + 1][0]) for i in range(len(ans) - 1)]
