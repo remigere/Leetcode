@@ -4,6 +4,7 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
+
         for i in range(n):
             found = True
             for j in range(n):
