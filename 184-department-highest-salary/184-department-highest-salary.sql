@@ -7,7 +7,7 @@ from
     employee e
     join Department d
     on e.departmentId = d.id
-where
+and
     (e.DepartmentId, e.salary) in
     (select DepartmentId, max(salary)
     from Employee
