@@ -5,13 +5,11 @@ class Solution:
         
         def backtracking(comb, start, k, n):
             if n == 0 and k == 0:
-                print("add", comb, start, k, n)
                 output.append(list(comb))
                 return
             elif n < 0 or k < 0:
                 return
             else:
-                print(comb, start, k, n)
                 for i in range(start + 1, len(L)):
                     backtracking(comb + [L[i]], i, k - 1, n - L[i])
                 
