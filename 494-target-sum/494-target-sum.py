@@ -18,19 +18,18 @@ class Solution:
         backtracking(0, target)
         return output
         """
-        n = len(nums)
-        
-        memo = {}
-        def dfs(start, remain):
-            if (start, remain) not in memo:
-                if start == n:
-                    if remain == 0:
-                        memo[(start, remain)] = 1
-                    else:
-                        memo[(start, remain)] = 0
-                else:
-                    sub = dfs(start + 1, remain - nums[start])
-                    add = dfs(start + 1, remain + nums[start])
-                    memo[(start, remain)] = sub + add
-            return memo[(start, remain)]
-        return dfs(0, target)
+        total = sum(nums)
+        dp = [[0] * (2 * total + 1) for _ in range(len(nums) + 1)]
+        # start at 0 (total is the middle element)
+        dp[0][total] = 1
+        for i, num in enumerate(nums):
+            for s in range(2 * total + 1):
+                #print(i + 1, s + num, s - num)
+                #print("len", len(dp), len(dp[0]))
+                if dp[i][s] > 0:
+                    dp[i + 1][s + num] += dp[i][s]
+                    dp[i + 1][s - num] += dp[i][s]
+        if abs(target) > total:
+            return 0
+        else:
+            return dp[-1][total + target]
