@@ -3,10 +3,10 @@ class Solution:
         self.count = 0
         # 2n - 1 center
         
-        print("here")
+        #print("here")
         
         def pal(i, j):
-            print(i, j)
+            #print(i, j)
             while 0 <= i and j <= len(s) - 1:
                 if s[i] == s[j]:
                     i = i - 1
