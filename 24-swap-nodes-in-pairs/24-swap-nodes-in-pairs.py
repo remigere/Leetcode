@@ -10,16 +10,20 @@ class Solution:
         
         cur = head
         left = None
-        start = cur.next
+        dummy = ListNode(-1)
+        dummy.next = head
+        left = dummy
         
         while cur and cur.next:
             
             right = cur.next
+            
+            left.next = right
             cur.next = right.next
             right.next = cur
-            if left:
-                left.next = right
+           
+            
             left = cur
             cur = cur.next
             
-        return start
+        return dummy.next
