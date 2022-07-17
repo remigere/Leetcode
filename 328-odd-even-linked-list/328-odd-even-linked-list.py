@@ -8,10 +8,9 @@ class Solution:
         if not head:
             return head
         
-        start_odd = head
         start_even = head.next
         
-        odd = start_odd
+        odd = head
         even = start_even
         
         while odd and even:
@@ -29,4 +28,4 @@ class Solution:
         else:
             prev.next = start_even
         
-        return start_odd
+        return head
