@@ -1,3 +1,4 @@
+"""
 class Union:
     def __init__(self, n):
         self.n = n
@@ -33,3 +34,25 @@ class Solution:
         for edge in edges:
             uf.union(edge[0], edge[1])
         return uf.count()
+"""
+class Solution:
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+        ele = set([i for i in range(n)])
+        adj = defaultdict(list)
+        for start, end in edges:
+            adj[start].append(end)
+            adj[end].append(start)
+        visited = set()
+        queue = deque()
+        count = 0
+        while len(visited) < n:
+            queue.append(next(iter(ele - visited)))
+            count += 1
+            while queue:
+                node = queue.popleft()
+                if node in visited:
+                    continue
+                visited.add(node)
+                queue.extend(adj[node])
+        return count
+            
