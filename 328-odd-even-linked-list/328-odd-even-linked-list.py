@@ -13,19 +13,12 @@ class Solution:
         odd = head
         even = start_even
         
-        while odd and even:
+        while even and even.next:
             odd.next = even.next
-            prev = odd
             odd = odd.next
-            if odd:
-                even.next = odd.next
-            else:
-                even.next = None
+            even.next = odd.next
             even = even.next
         
-        if odd:
-            odd.next = start_even
-        else:
-            prev.next = start_even
+        odd.next = start_even
         
         return head
