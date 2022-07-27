@@ -19,7 +19,7 @@ class UF:
                 self.root[rootY] = rootX
             else:
                 self.root[rootY] = rootX
-                self.rank[rootY] += 1
+                self.rank[rootX] += 1
             self.count -= 1
 
 class Solution:
