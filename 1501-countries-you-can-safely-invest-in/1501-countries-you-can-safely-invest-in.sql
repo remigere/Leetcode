@@ -1,10 +1,29 @@
 # Write your MySQL query statement below
+
 select co.name as country
 
-from person p
-join country co
+from Calls as c
+
+left join Person as p
+on p.id in (c.caller_id, c.callee_id)
+
+left join Country as co
 on left(p.phone_number, 3) = co.country_code
-join calls ca
-on p.id in (ca.caller_id, ca.callee_id)
+
 group by co.name
-having avg(ca.duration) > (select avg(duration) from calls)
+having avg(duration) > (select avg(duration) from calls)
+
+# SELECT
+#  co.name AS country
+# FROM
+#  person p
+#  JOIN
+#      country co
+#      ON SUBSTRING(phone_number,1,3) = country_code
+#  JOIN
+#      calls c
+#      ON p.id IN (c.caller_id, c.callee_id)
+# GROUP BY
+#  co.name
+# HAVING
+#  AVG(duration) > (SELECT AVG(duration) FROM calls)
