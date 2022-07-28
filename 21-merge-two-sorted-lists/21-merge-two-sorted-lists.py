@@ -14,12 +14,5 @@ class Solution:
                 cur.next = ListNode(list2.val)
                 list2 = list2.next
             cur = cur.next
-        while list1:
-            cur.next = ListNode(list1.val)
-            list1 = list1.next
-            cur = cur.next
-        while list2:
-            cur.next = ListNode(list2.val)
-            list2 = list2.next
-            cur = cur.next
+        cur.next = list1 or list2
         return head.next
