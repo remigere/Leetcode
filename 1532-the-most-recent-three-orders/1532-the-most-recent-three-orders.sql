@@ -8,7 +8,6 @@ from
 (
 select *, dense_rank() over(partition by customer_id order by order_date desc) r
 from orders
-order by customer_id, order_date
 ) t
 natural join customers c
 where t.r <= 3
